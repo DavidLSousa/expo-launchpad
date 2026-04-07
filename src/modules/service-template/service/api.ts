@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ExampleResponse } from '../types';
 
-// Exemplo de instância do axios centralizada
+// Centralized Axios instance example
 const api = axios.create({ baseURL: 'https://api.example.com' });
 
 export const exampleService = {
@@ -10,8 +10,8 @@ export const exampleService = {
       const response = await api.get('/endpoint');
       return response.data;
     } catch (error) {
-       // Mapeamento de erro
-      throw new Error('Falha ao buscar dados');
+       // Error mapping
+      throw new Error('Failed to fetch data');
     }
   },
   
@@ -19,7 +19,7 @@ export const exampleService = {
     try {
       await api.post('/endpoint', payload);
     } catch (error) {
-      throw new Error('Falha ao enviar dados');
+      throw new Error('Failed to submit data');
     }
   }
 };

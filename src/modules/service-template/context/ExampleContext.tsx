@@ -19,7 +19,7 @@ export const ExampleProvider: React.FC<{ children: ReactNode }> = ({ children })
     try {
       const response = await exampleService.fetchData();
       setData(response.data);
-      // Aqui entraria persistência local (ex: AsyncStorage.setItem(...))
+      // Local persistence could be added here (e.g., AsyncStorage.setItem(...))
     } catch (error) {
       console.error(error);
     } finally {

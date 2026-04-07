@@ -1,4 +1,4 @@
 export interface Info {
   id: string;
-  valor: number;
+  value: number;
 }
