@@ -51,12 +51,12 @@ const getStyles = (colors: AppColors, textColor: string | undefined) =>
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingVertical: Spacing.lg,
-      marginBottom: Spacing.lg,
+      paddingVertical: Spacing.s16,
+      marginBottom: Spacing.s16,
     },
     noAccountText: {
       color: colors.gray,
-      marginRight: Spacing.sm,
+      marginRight: Spacing.s8,
     },
     createText: {
       color: colors.primary,

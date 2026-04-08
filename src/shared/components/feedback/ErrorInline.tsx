@@ -21,7 +21,7 @@ const ErrorInline: React.FC<ErrorInlineProps> = ({ message, style }) => {
         {
           color: colors.expense,
           textAlign: 'center',
-          marginBottom: Spacing.lg,
+          marginBottom: Spacing.s16,
         },
         style,
       ]}

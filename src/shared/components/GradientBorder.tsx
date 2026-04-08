@@ -17,7 +17,7 @@ export default function GradientBorder({
   children,
   padding = 1,
   borderRadius = BorderRadius.lg,
-  marginBottom = Spacing.lg,
+  marginBottom = Spacing.s16,
   colors: customColors,
   style,
 }: GradientBorderProps) {

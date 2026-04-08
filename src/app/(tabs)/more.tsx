@@ -30,10 +30,10 @@ export default function MoreScreen() {
 const styles = (colors: AppColors) =>
   StyleSheet.create({
     safeArea: { flex: 1, backgroundColor: colors.background },
-    mainContent: { flex: 1, paddingHorizontal: Spacing.xl },
+    mainContent: { flex: 1, paddingHorizontal: Spacing.s24 },
     text: {
       color: colors.text,
       fontSize: Typography.body,
-      marginTop: Spacing.md,
+      marginTop: Spacing.s12,
     },
   });

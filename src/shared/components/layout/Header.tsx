@@ -24,31 +24,32 @@ export type HeaderProps = {
   title?: string;
   showBackButton?: boolean;
   showLogo?: boolean;
+  showLanguageSelector?: boolean;
   flexStart?: boolean;
   onBackPress?: () => void;
   rightElement?: ReactNode;
   transparent?: boolean;
   absolute?: boolean;
-  showCompanySelect?: boolean;
 };
 
 export default function Header({
   title,
   showBackButton,
   showLogo = false,
+  showLanguageSelector = false,
   flexStart = false,
   onBackPress,
   rightElement,
   transparent = true,
   absolute = false,
-  showCompanySelect = false,
 }: HeaderProps) {
   const { locale } = useI18nContext();
   const insets = useSafeAreaInsets();
   const { theme } = useThemeContext();
   const colors = Colors[theme];
 
-  const topPadding = absolute ? insets.top : Math.max(Spacing.lg);
+  const topPadding = absolute ? insets.top : Spacing.s8;
+  const headerBg = transparent ? 'transparent' : colors.background;
 
   const handleBack = () => {
     if (onBackPress) {
@@ -66,19 +67,16 @@ export default function Header({
         backgroundColor={transparent ? 'transparent' : colors.background}
       />
       <View
-        style={[
-          styles.wrapper,
-          { backgroundColor: transparent ? 'transparent' : colors.background },
-          absolute && styles.wrapperAbsolute,
-        ]}
+        style={[styles.wrapper, { backgroundColor: headerBg }, absolute && styles.wrapperAbsolute]}
       >
         <View
           style={[
             styles.container,
             {
-              paddingTop: topPadding + Spacing.sm,
-              paddingLeft: insets.left + Spacing.xl,
-              paddingRight: insets.right + Spacing.xl,
+              paddingTop: topPadding + Spacing.s8,
+              paddingLeft: insets.left + Spacing.s16,
+              paddingRight: insets.right + Spacing.s16,
+              backgroundColor: 'transparent',
             },
           ]}
         >
@@ -87,10 +85,10 @@ export default function Header({
               <TouchableOpacity
                 onPress={handleBack}
                 hitSlop={{
-                  top: Spacing.md,
-                  bottom: Spacing.md,
-                  left: Spacing.md,
-                  right: Spacing.md,
+                  top: Spacing.s12,
+                  bottom: Spacing.s12,
+                  left: Spacing.s12,
+                  right: Spacing.s12,
                 }}
                 style={styles.backButton}
               >
@@ -98,11 +96,25 @@ export default function Header({
               </TouchableOpacity>
             )}
             {showLogo && flexStart && (
-              <View style={{ marginTop: Spacing.xl }}>
+              <View style={{ marginTop: Spacing.s24 }}>
                 <Logo />
               </View>
             )}
           </View>
+
+          {!flexStart && (
+            <View style={styles.centerContainer}>
+              {showLogo ? (
+                <View style={{ marginTop: Spacing.s24 }}>
+                  <Logo />
+                </View>
+              ) : title ? (
+                <Text style={[styles.title, { color: colors.text }]} numberOfLines={1}>
+                  {title}
+                </Text>
+              ) : null}
+            </View>
+          )}
 
           <View style={styles.rightContainer}>{rightElement}</View>
         </View>
@@ -129,19 +141,19 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
     maxWidth: Spacing.maxWidth,
-    paddingBottom: Spacing.md,
+    paddingBottom: Spacing.s12,
   },
   sideContainer: {
     flex: 1,
     justifyContent: 'center',
     minWidth: 50,
-    marginRight: Spacing.md,
+    marginRight: Spacing.s12,
   },
   rightContainer: {
     alignItems: 'flex-end',
     justifyContent: 'center',
     minWidth: 72,
-    marginLeft: Spacing.sm,
+    marginLeft: Spacing.s8,
   },
   centerContainer: {
     flex: 20,
@@ -154,31 +166,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: Typography.h6,
     fontWeight: '600',
-    textAlign: 'center',
-  },
-  companySelector: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing.xs,
-  },
-  modalOverlay: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalContent: {
-    borderRadius: 12,
-    padding: 20,
-    width: '80%',
-    maxHeight: '60%',
-  },
-  optionItem: {
-    paddingVertical: 15,
-    borderBottomWidth: 1,
-  },
-  optionText: {
-    fontSize: 16,
     textAlign: 'center',
   },
 });

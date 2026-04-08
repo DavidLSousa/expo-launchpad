@@ -29,17 +29,17 @@ export default function HomeScreen() {
 const styles = (colors: AppColors) =>
   StyleSheet.create({
     safeArea: { flex: 1, backgroundColor: colors.background },
-    mainContent: { flex: 1, paddingHorizontal: Spacing.xl },
+    mainContent: { flex: 1, paddingHorizontal: Spacing.s24 },
     content: {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      padding: Spacing.lg,
+      padding: Spacing.s16,
     },
     title: {
       fontSize: Typography.h2,
       fontWeight: '700',
-      marginBottom: Spacing.sm,
+      marginBottom: Spacing.s8,
     },
     subtitle: {
       fontSize: Typography.body,

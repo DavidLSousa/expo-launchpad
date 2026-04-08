@@ -22,8 +22,8 @@ const Title: React.FC<TitleProps> = ({ text, center = false, color }) => {
         fontWeight: Typography.weight_bold,
         color: color ? color : colors.text,
         alignSelf: center ? 'center' : 'flex-start',
-        marginTop: Spacing.md,
-        marginBottom: Spacing.xxl,
+        marginTop: Spacing.s12,
+        marginBottom: Spacing.s32,
       }}
     >
       {text}

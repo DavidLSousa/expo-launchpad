@@ -65,8 +65,8 @@ const getStyles = (colors: AppColors) =>
     },
     content: {
       backgroundColor: colors.background,
-      padding: Spacing.xl,
-      paddingBottom: Spacing.xxxxl,
+      padding: Spacing.s24,
+      paddingBottom: Spacing.s64,
       borderTopLeftRadius: BorderRadius.lg,
       borderTopRightRadius: BorderRadius.lg,
     },
@@ -76,6 +76,6 @@ const getStyles = (colors: AppColors) =>
       borderRadius: BorderRadius.sm,
       backgroundColor: colors.inputBackgroundDark,
       alignSelf: 'center',
-      marginBottom: Spacing.sm,
+      marginBottom: Spacing.s8,
     },
   });

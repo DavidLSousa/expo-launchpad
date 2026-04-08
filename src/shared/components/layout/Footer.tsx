@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import { Platform, View } from 'react-native';
+import React, { ReactNode, useEffect, useState } from 'react';
+import { Keyboard, Platform, View } from 'react-native';
 import { Spacing } from '../../constants';
 
 export type FooterProps = {
@@ -7,6 +7,26 @@ export type FooterProps = {
 };
 
 export default function Footer({ children }: FooterProps) {
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const showSubscription = Keyboard.addListener(
+      Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow',
+      () => setIsVisible(false),
+    );
+    const hideSubscription = Keyboard.addListener(
+      Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide',
+      () => setIsVisible(true),
+    );
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
+
+  if (!isVisible) return null;
+
   return (
     <View
       style={[
@@ -14,7 +34,7 @@ export default function Footer({ children }: FooterProps) {
           ? Spacing.absoluteBottomTabBarIOS
           : Spacing.absoluteBottomTabBarAndroid,
         {
-          paddingHorizontal: Spacing.sm,
+          paddingHorizontal: Spacing.s8,
         },
       ]}
     >

@@ -70,11 +70,11 @@ export default PrimaryButton;
 const getStyles = (colors: AppColors, marginH: number | undefined) =>
   StyleSheet.create({
     button: {
-      paddingVertical: Spacing.lg,
-      paddingHorizontal: Spacing.md,
+      paddingVertical: Spacing.s16,
+      paddingHorizontal: Spacing.s12,
       borderRadius: BorderRadius.full,
       alignItems: 'center',
-      marginBottom: Spacing.sm,
+      marginBottom: Spacing.s8,
       marginHorizontal: marginH ? marginH : 0,
       ...Shadows.md,
     },

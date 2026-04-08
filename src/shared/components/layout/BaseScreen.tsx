@@ -43,7 +43,7 @@ export default function BaseScreen({
       style={[
         {
           flexDirection: 'column',
-          flex: 1, // Fixes empty layout collapse when using absolute fill
+          flex: 1,
           paddingBottom: withBottomInset ? insets.bottom + spacingBottom : 0,
           paddingTop: withTopInset ? 80 : 0,
         },
@@ -54,41 +54,12 @@ export default function BaseScreen({
     </View>
   );
 
-  if (!scrollable) {
-    return (
-      <View style={[{ backgroundColor: colors.background, flex: 1 }, style]}>
-        <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-          style={{ flex: 1 }}
-        >
-          <SafeAreaView
-            style={{ flex: 1 }}
-            edges={absoluteHeader || withTopInset ? ['left', 'right'] : ['top', 'left', 'right']}
-          >
-            {innerContent}
-          </SafeAreaView>
-        </KeyboardAvoidingView>
-      </View>
-    );
-  }
-
   return (
-    <View style={[{ backgroundColor: colors.background, flex: 1 }, style]}>
-      <ScrollView
-        automaticallyAdjustKeyboardInsets={true}
-        contentContainerStyle={[{ flexGrow: 1 }, contentContainerStyle]} // Needs flexGrow to measure inside native ScrollView
-        keyboardShouldPersistTaps="handled"
-        showsVerticalScrollIndicator={false}
-        contentInsetAdjustmentBehavior="automatic"
-        {...props}
-      >
-        <SafeAreaView
-          style={{ flex: 1 }}
-          edges={absoluteHeader || withTopInset ? ['left', 'right'] : ['top', 'left', 'right']}
-        >
-          {innerContent}
-        </SafeAreaView>
-      </ScrollView>
-    </View>
+    <SafeAreaView
+      style={[{ flex: 1, backgroundColor: colors.background }, style]}
+      edges={absoluteHeader ? ['left', 'right'] : ['top', 'left', 'right']}
+    >
+      {innerContent}
+    </SafeAreaView>
   );
 }

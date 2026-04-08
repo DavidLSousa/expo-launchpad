@@ -1,26 +1,31 @@
 export const Spacing = {
   /** 2 */
-  xxs: 2,
+  s2: 2,
   /** 4 */
-  xs: 4,
+  s4: 4,
   /** 8 */
-  sm: 8,
+  s8: 8,
   /** 12 */
-  md: 12,
+  s12: 12,
   /** 16 — padding/margem mais comum */
-  lg: 16,
+  s16: 16,
   /** 24 — seções principais */
-  xl: 24,
+  s24: 24,
   /** 32 */
-  xxl: 32,
+  s32: 32,
   /** 48 — bottom padding de página */
-  xxxl: 48,
+  s48: 48,
   /** 64 */
-  xxxxl: 64,
+  s64: 64,
   /** 80 */
-  xxxxxl: 80,
+  s80: 80,
   /** 100 */
-  xxxxxxl: 100,
+  s100: 100,
+
+  /** Daqui para baixo n precisa mexer */
+
+  /** 160 */
+  footer: 160,
 
   /** 1200 - maxWidth */
   maxWidth: 1200,

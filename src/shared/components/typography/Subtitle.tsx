@@ -21,7 +21,7 @@ const Subtitle: React.FC<Props> = ({ text, center = false, color }) => {
         fontSize: Typography.body,
         color: color ? color : colors.text,
         textAlign: center ? 'center' : 'left',
-        marginBottom: Spacing.xxl,
+        marginBottom: Spacing.s32,
       }}
     >
       {text}

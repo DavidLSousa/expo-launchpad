@@ -21,7 +21,7 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({ error, onReset }) => {
         <AlertTriangle size={64} color={colors.expense} />
         <Text style={[styles.title, { color: colors.text }]}>{t('common.errorTitle')}</Text>
         <Text style={styles.message}>{error?.message || t('common.errorMessage')}</Text>
-        <PrimaryButton title={t('common.retry')} onPress={onReset} marginH={Spacing.xl} />
+        <PrimaryButton title={t('common.retry')} onPress={onReset} marginH={Spacing.s24} />
       </View>
     </SafeAreaView>
   );
@@ -72,19 +72,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: Spacing.xl,
+    padding: Spacing.s24,
   },
   title: {
     fontSize: Typography.h4,
     fontWeight: 'bold',
-    marginTop: Spacing.lg,
+    marginTop: Spacing.s16,
     textAlign: 'center',
   },
   message: {
     fontSize: Typography.body,
     textAlign: 'center',
-    marginTop: Spacing.sm,
-    marginBottom: Spacing.xl,
+    marginTop: Spacing.s8,
+    marginBottom: Spacing.s24,
     color: '#666666',
   },
 });
