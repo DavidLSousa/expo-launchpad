@@ -1,13 +1,6 @@
 import { Colors } from '@/src/shared/constants';
 import React from 'react';
-import {
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  ScrollViewProps,
-  View,
-  ViewProps,
-} from 'react-native';
+import { Platform, ScrollViewProps, View, ViewProps } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useThemeContext } from '../../context/useThemeContext';
 
@@ -46,6 +39,7 @@ export default function BaseScreen({
           flex: 1,
           paddingBottom: withBottomInset ? insets.bottom + spacingBottom : 0,
           paddingTop: withTopInset ? 80 : 0,
+          marginTop: Platform.OS === 'ios' && Platform.isPad ? 50 : 0,
         },
         style,
       ]}
