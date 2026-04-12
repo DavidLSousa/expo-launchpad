@@ -34,11 +34,19 @@ export default function Footer({ children }: FooterProps) {
           ? Spacing.absoluteBottomTabBarIOS
           : Spacing.absoluteBottomTabBarAndroid,
         {
-          paddingHorizontal: Spacing.s8,
+          alignItems: 'center',
         },
       ]}
     >
-      {children}
+      <View
+        style={{
+          width: '100%',
+          maxWidth: Spacing.maxWidth,
+          paddingHorizontal: Spacing.s8,
+        }}
+      >
+        {children}
+      </View>
     </View>
   );
 }

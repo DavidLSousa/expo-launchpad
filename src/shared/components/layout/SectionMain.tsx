@@ -61,10 +61,10 @@ export default function SectionMain({
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={{ flex: 1 }}
+      style={{ flex: 1, alignItems: 'center' }}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : Spacing.s24}
     >
-      {content}
+      <View style={[{ width: '100%', maxWidth: Spacing.maxWidth, flex: 1 }]}>{content}</View>
     </KeyboardAvoidingView>
   );
 }

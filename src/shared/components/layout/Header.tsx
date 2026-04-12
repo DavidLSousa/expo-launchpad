@@ -1,23 +1,13 @@
 import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { ChevronDown, ChevronLeft } from 'lucide-react-native';
-import React, { ReactNode, useState } from 'react';
-import {
-  FlatList,
-  Modal,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-  ViewStyle,
-  StyleProp,
-} from 'react-native';
+import { ChevronLeft } from 'lucide-react-native';
+import React, { ReactNode } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors } from '../../constants/Colors';
 import { Spacing } from '../../constants/Spacing';
 import { Typography } from '../../constants/Typography';
-import { useI18nContext, useThemeContext } from '@/src/shared/context';
+import { useThemeContext } from '@/src/shared/context';
 import Logo from '../icons/Logo';
 
 export type HeaderProps = {
@@ -36,14 +26,12 @@ export default function Header({
   title,
   showBackButton,
   showLogo = false,
-  showLanguageSelector = false,
   flexStart = false,
   onBackPress,
   rightElement,
   transparent = true,
   absolute = false,
 }: HeaderProps) {
-  const { locale } = useI18nContext();
   const insets = useSafeAreaInsets();
   const { theme } = useThemeContext();
   const colors = Colors[theme];
