@@ -1,17 +1,19 @@
+const PREFIX = '@template';
+
 export const STORAGE_KEYS = {
   // Auth (SecureStore)
-  ACCESS_TOKEN: '@template:access_token',
-  REFRESH_TOKEN: '@template:refresh_token',
+  ACCESS_TOKEN: `${PREFIX}.access_token`,
+  REFRESH_TOKEN: `${PREFIX}.refresh_token`,
 
   // User
-  USER: 'user',
+  USER: `${PREFIX}.user`,
 
   // Preferences (AsyncStorage)
-  APP_THEME: 'APP_THEME',
-  APP_LOCALE: 'APP_LOCALE',
+  APP_THEME: `${PREFIX}.APP_THEME`,
+  APP_LOCALE: `${PREFIX}.APP_LOCALE`,
 
   // Cache
-  QUERY_CACHE: '@template:query_cache',
+  QUERY_CACHE: `${PREFIX}.query_cache`,
 } as const;
 
 export type StorageKey = (typeof STORAGE_KEYS)[keyof typeof STORAGE_KEYS];
