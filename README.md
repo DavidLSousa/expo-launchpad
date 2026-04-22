@@ -47,12 +47,28 @@ O template já nasce falando fluente em **React Query** (TanStack) para cache e 
 
 ---
 
-## 🔒 Segurança de Qualidade (Lint & Husky)
+## 🧪 Estratégia de Testes
 
-Nunca mais deixe código "sujo" poluir seu repositório. O template é guardado a cadeados por mecanismos automáticos de qualidade locais no processo do Git:
+Nossa arquitetura de testes é dividida para garantir confiança e velocidade, seguindo padrões de mercado:
 
-- **Husky / Commitlint**: Seus commits não entram no hitórico sem respeitar o _Conventional Commits_ (ex: `feat: add awesome button`, `fix: header padding`).
-- **Lint-Staged**: Apenas os arquivos que você tocou serão processados no pre-commit por Prettier (formatação) e ESLint (Regras rígidas em conjunto com Typescript v9 Flat Config).
+### 1. Testes de Unidade (Lógica e UI)
+
+Focados em validar pequenas partes do sistema de forma isolada.
+
+- **Services**: Testamos as chamadas de API e transformações de dados sem dependências externas.
+- **Componentes de UI**: Validamos se o componente renderiza corretamente e se os eventos (onPress, etc) funcionam como esperado.
+- **Localização**: `src/modules/[module]/__tests__/[File].test.tsx`
+
+### 2. Testes de Integração (Hooks e Fluxos)
+
+Focados em validar como múltiplos componentes e estados trabalham juntos.
+
+- **Hooks Customizados**: Testamos os hooks envolvidos por todos os Providers necessários (Auth, Theme, Query).
+- **Localização**: `src/modules/[module]/__tests__/[Hook].test.ts`
+
+### 3. A Peça Central: `test-utils.tsx`
+
+Seguimos o **padrão recomendado pela React Testing Library** de criar um utilitário central que re-exporta as ferramentas de teste injetando automaticamente todos os Providers do sistema. Isso garante que seu teste de integração seja o mais próximo possível da realidade do usuário.
 
 ---
 

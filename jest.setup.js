@@ -44,10 +44,23 @@ jest.mock('@react-native-async-storage/async-storage', () =>
 );
 
 // Simulação de SecureStore
+// jest.mock('expo-secure-store', () => ({
+//   getItemAsync: jest.fn(() => Promise.resolve('mock-token')),
+//   setItemAsync: jest.fn(() => Promise.resolve()),
+//   deleteItemAsync: jest.fn(() => Promise.resolve()),
+// }));
+// Simulação de SecureStore Dinâmica
+const mockSecureStore = {};
 jest.mock('expo-secure-store', () => ({
-  getItemAsync: jest.fn(() => Promise.resolve('mock-token')),
-  setItemAsync: jest.fn(() => Promise.resolve()),
-  deleteItemAsync: jest.fn(() => Promise.resolve()),
+  getItemAsync: jest.fn((key) => Promise.resolve(mockSecureStore[key] || null)),
+  setItemAsync: jest.fn((key, value) => {
+    mockSecureStore[key] = value;
+    return Promise.resolve();
+  }),
+  deleteItemAsync: jest.fn((key) => {
+    delete mockSecureStore[key];
+    return Promise.resolve();
+  }),
 }));
 
 // Simulação de NetInfo (Rede Offline/Online)
